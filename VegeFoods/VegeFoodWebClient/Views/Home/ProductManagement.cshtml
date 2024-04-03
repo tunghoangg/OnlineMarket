@@ -1,0 +1,250 @@
+﻿@using BusinessObjects;
+@using VegeFoodWebClient.SessionExtensions;
+@model VegeFoodWebClient.Controllers.HomeController
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IHttpContextAccessor contxt;
+@{
+    Layout = "_LayoutAdmin";
+    User u = contxt.HttpContext.Session.GetObject<User>("User");
+}
+
+@*<div>
+    <h4 class="m-0 font-weight-bold text-primary">Product Management</h4>
+</div>*@
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div class="input-group">
+            <input type="text" class="form-control bg-light border-1 small" placeholder="Search for product"
+                   aria-label="Search" id="searchString" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button style="margin-right: 2px" class="btn btn-primary" id="search" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+                <a href="/Home/CreateProduct"><button type="button" class="btn btn-primary">Create</button></a>
+            </div>
+        </div>
+
+        
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                @*<thead>
+                <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                <tr>
+                <td>Donna Snider</td>
+                <td>Customer Support</td>
+                <td>New York</td>
+                <td>27</td>
+                <td>2011/01/25</td>
+                <td>$112,000</td>
+                </tr>
+                </tbody>*@
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul id="pages" class="pagination justify-content-end">
+                    @*<li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>*@
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        var page = 1;
+        var totalPages = 0;
+
+        $('#search').click(() => {
+            let searchString = $('#searchString').val();
+
+            $.ajax({
+                url: `http://localhost:5104/api/Product/SearchProductByName/${searchString}/${page}`,
+                method: 'GET',
+                beforeSend: function (xhr) {
+                    // Use proper concatenation to include the token in the header
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                },
+                contentType: 'application/json',
+                success: (data) => {
+                    $('#dataTable').html('');
+                    //nếu có data trả về
+                    if (data) {
+                        $('#dataTable').html(generateHtmlProductList(data.products));
+                        $('#pages').hide()
+                    }
+                },
+                error: (data) => {
+
+                }
+            })
+
+
+        });
+
+        $(document).ready(function () {
+            var userCheck = @Html.Raw(Json.Serialize(u));
+            if (userCheck.role != "Admin") {
+                alert("Access Denied")
+                window.location.href = "http://localhost:5007/Home/Index";
+            }
+            $.ajax({
+                url: `http://localhost:5104/api/Product/${page}`, // Replace with your endpoint URL
+                method: 'GET',
+                beforeSend: function (xhr) {
+                    // Use proper concatenation to include the token in the header
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                },
+                contentType: 'application/json',
+                success: (data) => {
+                    //console.log(data);
+                    $('#dataTable').html('');
+                    //nếu có data trả về
+                    if (data) {
+                        $('#dataTable').html(generateHtmlProductList(data.products));
+                        totalPages = data.pages;
+                        let dataPage = '';
+                        var i = 1;
+                        for (i; i <= totalPages; i++) {
+
+                            dataPage += `<li class="page-item"><a class="page-link" style="margin: 3px" id="page` + i + `" onclick="GotoPage(` + i + `)" href="#">` + i + `</a></li>`;
+                        }
+                        $('#pages').append(dataPage)
+                    }
+
+                },
+                error: function () {
+                    console.error('Failed to fetch data.');
+                }
+            });
+
+            $(document).on('click', '.deleteButton', function () {
+                let id = $(this).attr('data-id');
+
+                $.ajax({
+                    url: `http://localhost:5104/api/Product/${id}`,
+                    method: 'DELETE',
+                    beforeSend: function (xhr) {
+                        // Use proper concatenation to include the token in the header
+                        xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                    },
+                    contentType: 'application/json',
+                    success: (data) => {
+                        alert("Delete successfully");
+                        window.location.href = "http://localhost:5007/Home/ProductManagement";
+                    },
+                    error: (data) => {
+
+                    }
+                })
+            })
+            
+        });
+    </script>
+
+    <script>
+        function GotoPage(i) {
+
+            $.ajax({
+                url: `http://localhost:5104/api/Product/${i}`, // Replace with your endpoint URL
+                method: 'GET',
+                beforeSend: function (xhr) {
+                    // Use proper concatenation to include the token in the header
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                },
+                contentType: 'application/json',
+                success: (data) => {
+                    //console.log(data);
+                    $('#dataTable').html('');
+                    //nếu có data trả về
+                    if (data) {
+                        $('#dataTable').html(generateHtmlProductList(data.products));
+                        console.log(data.pages);
+                        totalPages = data.pages;
+                    }
+
+                },
+                error: function () {
+                    console.error('Failed to fetch data.');
+                }
+            });
+        };
+
+        const generateHtmlProductList = (data) => {
+            let tableContent =
+                `<thead>
+                     <tr>
+                         <th>Name</th>
+                         <th>Category</th>
+                         <th>Unit</th>
+                         <th>Price</th>
+                         <th>Image</th>
+                         <th>Control</th>
+                     </tr>
+                </thead>
+                <tfoot>
+                     <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Unit</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Control</th>
+                     </tr>
+                </tfoot>
+                <tbody>
+                      {0}
+                </tbody>
+                `
+
+
+            let tableData = '';
+            //console.log(data.products);
+            data.forEach(element => {
+                console.log(element);
+
+                tableData +=
+                    `
+                    <tr>
+                        <td>${element.productName}</td>
+                        <td>${element.category.categoryName}</td>
+                        <td>${element.unitInStock}</td>
+                        <td>${element.unitPrice} VND</td>
+                        <td><img style="display: center" width="100px" height="100px" src="${element.productImage}"></td>
+                        <td>
+                            <a class="deleteButton" data-id="${element.productId}" ><button type="button" class="btn btn-danger">Delete</button></a>
+                            <a href="http://localhost:5007/Home/UpdateProduct/?productId=${element.productId}"><button type="button" class="btn btn-secondary">Update</button></a>
+                        </td>
+                    </tr>
+                    `
+            });
+
+            return tableContent.replace('{0}', tableData);
+        }
+
+        
+    </script>
+}

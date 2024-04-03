@@ -1,0 +1,96 @@
+﻿@model VegeFoodWebClient.Controllers.HomeController
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IHttpContextAccessor contxt;
+@{
+    Layout = "_LayoutAdmin";
+}
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h4 class="m-0 font-weight-bold text-primary">Order Details</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+
+
+        var id = @ViewData["orderIdDetail"];
+        console.log(id);
+        console.log('đây là id ');
+
+        $(document).ready(function () {
+            $.ajax({
+                url: `http://localhost:5104/api/OrderDetails/GetOrderDetails/${id}`, // Replace with your endpoint URL
+                method: 'GET',
+                beforeSend: function (xhr) {
+                    // Use proper concatenation to include the token in the header
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                },
+                contentType: 'application/json',
+                success: (data) => {
+                    //console.log(data);
+                    $('#dataTable').html('');
+                    //nếu có data trả về
+                    
+                    if (data) {
+                        $('#dataTable').html(generateHtmlOrderDetails(data));
+                        console.log(data);
+                    }
+                    console.log('k có data');
+
+                },
+                error: function () {
+                    console.error('Failed to fetch data.');
+                }
+            });
+
+            const generateHtmlOrderDetails = (data) => {
+                let tableContent =
+                `<thead>
+                     <tr>
+                        
+                         <th>Name</th>
+                         <th>Quantity</th>
+                         <th>Price</th>
+                         <th>Image</th>
+                     </tr>
+                </thead>
+
+                <tbody>
+                      {0}
+                </tbody>
+                `
+
+
+                let tableData = '';
+                //console.log(data.products);
+                data.forEach(element => {
+                console.log(element);
+
+                tableData +=
+                    `
+                    <tr>
+                
+                        <td>${element.product.productName}</td>
+                        <td>${element.quantity}</td>
+                        <td>${element.price} VNĐ</td>
+                        <td><img style="display: center" width="100px" height="100px" src="${element.product.productImage}"></td>
+                    </tr>
+                    `
+                });
+                return tableContent.replace('{0}', tableData);
+            }
+        });
+    </script>
+}

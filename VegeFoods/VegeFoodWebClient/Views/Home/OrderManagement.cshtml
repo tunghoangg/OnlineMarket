@@ -1,0 +1,189 @@
+﻿@using BusinessObjects;
+@using VegeFoodWebClient.SessionExtensions;
+@model VegeFoodWebClient.Controllers.HomeController
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IHttpContextAccessor contxt;
+@{
+    Layout = "_LayoutAdmin";
+    User u = contxt.HttpContext.Session.GetObject<User>("User");
+}
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h4 class="m-0 font-weight-bold text-primary">Order Management</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                @*<thead>
+                <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                <tr>
+                <td>Donna Snider</td>
+                <td>Customer Support</td>
+                <td>New York</td>
+                <td>27</td>
+                <td>2011/01/25</td>
+                <td>$112,000</td>
+                </tr>
+                </tbody>*@
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul id="pages" class="pagination justify-content-end">
+                    @*<li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>*@
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        var page = 1;
+        var totalPages = 0;
+
+        $(document).ready(function () {
+            var userCheck = @Html.Raw(Json.Serialize(u));
+            if (userCheck.role != "Admin") {
+                alert("Access Denied")
+                window.location.href = "http://localhost:5007/Home/Index";
+            }
+            $.ajax({
+                url: `http://localhost:5104/api/Order/${page}`, // Replace with your endpoint URL
+                method: 'GET',
+                beforeSend: function (xhr) {
+                    // Use proper concatenation to include the token in the header
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                },
+                contentType: 'application/json',
+                success: (data) => {
+                    //console.log(data);
+                    $('#dataTable').html('');
+                    //nếu có data trả về
+                    if (data) {
+                        $('#dataTable').html(generateHtmlOrderList(data.orders));
+                        totalPages = data.pages;
+                        let dataPage = '';
+                        var i = 1;
+                        for (i; i <= totalPages; i++) {
+
+                            dataPage += `<li class="page-item"><a class="page-link" style="margin: 3px" id="page` + i + `" onclick="GotoPage(` + i + `)" href="#">` + i + `</a></li>`;
+                        }
+                        $('#pages').append(dataPage)
+                    }
+
+                },
+                error: function () {
+                    console.error('Failed to fetch data.');
+                }
+            });
+
+            
+        });
+    </script>
+
+    <script>
+        function GotoPage(i) {
+
+            $.ajax({
+                url: `http://localhost:5104/api/Order/${i}`, // Replace with your endpoint URL
+                method: 'GET',
+                beforeSend: function (xhr) {
+                    // Use proper concatenation to include the token in the header
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                },
+                contentType: 'application/json',
+                success: (data) => {
+                    //console.log(data);
+                    $('#dataTable').html('');
+                    //nếu có data trả về
+                    if (data) {
+                        $('#dataTable').html(generateHtmlOrderList(data.orders));
+                        console.log(data);
+                        totalPages = data.pages;
+                    }
+
+                },
+                error: function () {
+                    console.error('Failed to fetch data.');
+                }
+            });
+        };
+
+        const generateHtmlOrderList = (data) => {
+            let tableContent =
+                `<thead>
+                     <tr>
+                         <th>Customer Name</th>
+                         <th>Order Date</th>
+                         <th>Address</th>
+                         <th>Phone</th>
+                         <th>Status</th>
+                         <th>Control Actions</th>
+                     </tr>
+                </thead>
+                <tfoot>
+                     <tr>
+                         <th>Customer Name</th>
+                         <th>Order Date</th>
+                         <th>Address</th>
+                         <th>Phone</th>
+                         <th>Status</th>
+                         <th>Control Actions</th>
+                     </tr>
+                </tfoot>
+                <tbody>
+                      {0}
+                </tbody>
+                `
+
+
+            let tableData = '';
+            //console.log(data.products);
+            data.forEach(element => {
+                console.log(element);
+
+                tableData +=
+                    `
+                    <tr>
+                        <td>${element.customer.userName}</td>
+                        <td>${element.orderDate}</td>
+                        <td>${element.address}</td>
+                        <td>${element.phone}</td>
+                        <td>${element.status}</td>
+                        <td>
+                            <a href="http://localhost:5007/Home/OrderDetails/?orderId=${element.orderId}"><button type="button" class="btn btn-secondary">Details</button></a>
+                            <a href="http://localhost:5007/Home/EditOrder/?orderId=${element.orderId}"><button type="button" class="btn btn-primary">Edit</button></a>
+                        </td>
+                    </tr>
+                    `
+            });
+            return tableContent.replace('{0}', tableData);
+        }
+
+
+    </script>
+}

@@ -1,0 +1,145 @@
+﻿@using BusinessObjects;
+@using VegeFoodWebClient.SessionExtensions;
+@model VegeFoodWebClient.Controllers.HomeController
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IHttpContextAccessor contxt;
+@{
+    Layout = "_LayoutAdmin";
+    User u = contxt.HttpContext.Session.GetObject<User>("User");
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div>
+        <h4 class="m-0 font-weight-bold text-primary">Create Product</h4>
+        </div>
+    </div>
+    <div class="card-body">
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name Product" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputState">Category</label>
+                    <select id="category" class="form-control">
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Units</label>
+                    <input type="number" class="form-control" id="units" placeholder="Unit In Stock" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Price</label>
+                    <input type="number" class="form-control" id="price" placeholder="Insert Price" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Image Link</label>
+                <input type="text" class="form-control" id="imgLink" placeholder="Insert Link" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Description</label>
+                <textarea class="form-control" id="description" rows="3"></textarea>
+            </div>
+            <button type="button" id="createbtn" class="btn btn-primary">Create Product</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var userCheck = @Html.Raw(Json.Serialize(u));
+            if (userCheck.role != "Admin") {
+                alert("Access Denied")
+                window.location.href = "http://localhost:5007/Home/Index";
+            }
+            $.ajax({
+                url: `http://localhost:5104/api/Category`, // Replace with your endpoint URL
+                method: 'GET',
+                beforeSend: function (xhr) {
+                    // Use proper concatenation to include the token in the header
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                },
+                contentType: 'application/json',
+                success: (data) => {
+                    //console.log(data);
+                    $('#category').html('');
+                    //nếu có data trả về
+                    if (data) {
+                        $('#category').html(generateHtmlCategory(data));
+                    }
+
+                },
+                error: function () {
+                    console.error('Failed to fetch data.');
+                }
+            });
+
+            const generateHtmlCategory = (data) => {
+                let content =
+                    `{0}`
+
+
+                let dataGrid = '';
+                //console.log(data.products);
+                data.forEach(element => {
+                    console.log(element);
+
+                    dataGrid +=
+                        `
+                        <option value="${element.categoryId}">${element.categoryName}</option>
+                        `
+                });
+                return content.replace('{0}', dataGrid);
+            }
+
+            $('#createbtn').click(() => {
+                let productName = $('#name').val(),
+                    productCategory = $('#category').val(),
+                    units = $('#units').val(),
+                    price = $('#price').val(),
+                    productImage = $('#imgLink').val();
+                    description = $('#description').val();
+
+
+                    $.ajax({
+                        url: 'http://localhost:5104/api/Product/Create',
+                        method: 'POST',
+                    beforeSend: function (xhr) {
+                        // Use proper concatenation to include the token in the header
+                        xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                    },
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            "productName": productName,
+                            "categoryId": productCategory,
+                            "unitInStock": units,
+                            "unitPrice": price,
+                            "productImage": productImage,
+                            "description": description
+                        }),
+                        success: function (data) {
+                            console.log(data);
+                            alert("Create product successfully");
+                            window.location.href = "http://localhost:5007/Home/ProductManagement";
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("error");
+                            //console.log(usernameR + "\n" + passwordR + "\n" + emailR + "\n" + phoneR + "\n" + fullNameR);
+                        }
+
+                    })
+            })
+        });
+    </script>
+
+
+    
+}

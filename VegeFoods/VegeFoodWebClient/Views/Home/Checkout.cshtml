@@ -1,0 +1,132 @@
+﻿@model VegeFoodWebClient.Controllers.HomeController
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IHttpContextAccessor contxt;
+@using BusinessObjects;
+@using VegeFoodWebClient.SessionExtensions;
+@{
+    Layout = "_LayoutCheckout";
+    User u = contxt.HttpContext.Session.GetObject<User>("User");
+    List<Product> cart = contxt.HttpContext.Session.GetObject<List<Product>>("cart");
+}
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 ftco-animate">
+                <form action="#" class="billing-form">
+                    <h3 class="mb-4 billing-heading">Bill Details</h3>
+                    <div class="row align-items-end">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="firstname">Full Name</label>
+                                <input type="text" class="form-control" placeholder="Full Name (Optional)">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="streetaddress">Address</label>
+                                <input type="text" id="address" class="form-control" placeholder="House number and street name">
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="text" id="phone" class="form-control" placeholder="Phone">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="emailaddress">Email</label>
+                                <input type="text" id="email" class="form-control" placeholder="Email (Optional)">
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                    </div>
+                </form><!-- END -->
+            </div>
+            <div class="col-xl-5">
+                <div class="row mt-5 pt-3">
+                    <div class="col-md-12 d-flex mb-5">
+                        <div class="cart-detail cart-total p-3 p-md-4">
+                            <h3 class="billing-heading mb-4">Cart Total</h3>
+
+                            <hr>
+                            <p class="d-flex total-price">
+                                <span>Total</span>
+                                <span>@ViewBag.TotalMoney</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="cart-detail p-3 p-md-4">
+                            <p><button id="purchased" class="btn btn-primary py-3 px-4">Place an order</button></p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .col-md-8 -->
+        </div>
+    </div>
+</section> <!-- .section -->
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#purchased').click(() => {
+                let customerid = @u.AccountId,
+                    address = $('#address').val(),
+                    phone = $('#phone').val(),
+                    products = @Html.Raw(Json.Serialize(cart));
+
+                // Create order
+                $.ajax({
+                    url: 'http://localhost:5104/api/Order/Create',
+                    method: 'POST',
+                    beforeSend: function (xhr) {
+                        // Use proper concatenation to include the token in the header
+                        xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                    },
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        "customerId": customerid,
+                        "address": address,
+                        "phone": phone
+                    }),
+                    success: function (orderData) {
+                        console.log("Order created:", orderData);
+
+                        console.log("Creating order detail for products:", products);
+                        $.ajax({
+                            url: 'http://localhost:5104/api/Order/CreateDetail',
+                            method: 'POST',
+                            beforeSend: function (xhr) {
+                                // Use proper concatenation to include the token in the header
+                                xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                            },
+                            contentType: 'application/json',
+                            data: JSON.stringify(products.map(product => ({
+                                "quantity": product.unitInStock,
+                                "productId": product.productId
+                            }))),
+                            success: function (detailData) {
+                                console.log("Order detail created:", detailData);
+                            },
+                            error: function (xhr, status, error) {
+                                console.log("Error creating order detail:", error);
+                            }
+                        })
+                        debugger
+
+                        alert("Purchased successfully");
+                        window.location.href = "http://localhost:5007/Home/Shop";
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("Error creating order:", error);
+                    }
+                });
+            });
+        });
+    </script>
+
+}

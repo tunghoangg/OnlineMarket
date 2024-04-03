@@ -1,0 +1,132 @@
+﻿@model VegeFoodWebClient.Controllers.HomeController
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IHttpContextAccessor contxt;
+@{
+	Layout = "_LayoutSingleProduct";
+}
+
+<section class="ftco-section">
+	<div class="container">
+		<div class="row">
+			<div id="content-img" class="col-lg-6 mb-5 ftco-animate">
+
+			</div>
+
+			<div id="content-detail" class="col-lg-6 product-details pl-md-5 ftco-animate">
+					
+			</div>
+		</div>
+	</div>
+</section>
+
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+	<script>
+		console.log(@ViewData["productId"]);
+
+		var id = @ViewData["productId"];
+
+		$(document).ready(function () {
+			$.ajax({
+				        url: `http://localhost:5104/api/Product/GetProductById/${id}`,
+				        method: 'GET',
+				beforeSend: function (xhr) {
+					// Use proper concatenation to include the token in the header
+					xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+				},
+				        contentType: 'application/json',
+				        success: (data) => {
+				            $('#content-detail').html('');
+				            //nếu có data trả về
+				            if (data) {
+				                //trỏ debug ở đây để debug trên web
+				                //debugger
+
+				                $('#content-img').html(generateHtmlProductImg(data));
+								$('#content-detail').html(generateHtmlProductDetail(data));
+				                //console.log(data) //nhập dữ liệu trên dòng
+
+				            }
+				        },
+				        error: (data) => {
+
+				        }
+			})
+
+			const generateHtmlProductImg = (data) => {
+				return `<div /*class="col-lg-6 mb-5 ftco-animate"*/>
+					<a href="${data.productImage}" class="image-popup"> <img src="${data.productImage}" class="img-fluid" alt = "Colorlib Template"> </a>
+						</div>`
+			}
+
+			const generateHtmlProductDetail = (data) => {
+				return `
+
+				<div /*class="col-lg-6 product-details pl-md-5 ftco-animate"*/>
+				<h3>${data.productName} </h3>
+				<div class="rating d-flex">
+					<p class="text-left mr-4">
+						<a href="#" class="mr-2">5.0</a>
+						<a href="#"><span class="ion-ios-star-outline"></span></a>
+						<a href="#"><span class="ion-ios-star-outline"></span></a>
+						<a href="#"><span class="ion-ios-star-outline"></span></a>
+						<a href="#"><span class="ion-ios-star-outline"></span></a>
+						<a href="#"><span class="ion-ios-star-outline"></span></a>
+					</p>
+					<p class="text-left mr-4">
+						<a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">Rating</span></a>
+					</p>
+				</div>
+				<p class="price"> <span>${data.unitPrice} VNĐ</span></p>
+				<p>
+					${data.description}
+									
+				</p>
+				<div class="row mt-4">
+						<div class="w-100"></div>
+						<div class="input-group col-md-6 d-flex mb-3">
+							<span class="input-group-btn mr-2">
+								<button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
+									<i class="ion-ios-remove"></i>
+								</button>
+							</span>
+							<input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+							<span class="input-group-btn ml-2">
+								<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+									<i class="ion-ios-add"></i>
+								</button>
+							</span>
+						</div>
+						<div class="w-100"></div>
+
+					</div>
+					<div class="w-100"></div>
+					
+				</div>
+																<p><a id="addToCartLink" onclick="addToCart()"" class="btn btn-black py-3 px-5">Add to Cart</a></p>
+			</div>`
+				
+			}
+			
+		});
+		
+
+	</script>
+	<script>
+		function addToCart() {
+			var quantity = parseInt(document.getElementById('quantity').value);
+			var url = '@Url.Action("SingleProduct", "Home", new { productId = ViewData["productId"]  })';
+			url += '&quantity=' + quantity;
+			window.location.href = url;
+		}
+	</script>
+
+	}
+
+
+
+
+
+	
+}

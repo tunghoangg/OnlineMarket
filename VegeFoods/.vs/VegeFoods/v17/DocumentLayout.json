@@ -1,0 +1,436 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{90EB513C-E46A-4C90-9422-728C57AFE5A9}|DataAccess\\DataAccess.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\dataaccess\\orderdetaildao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90EB513C-E46A-4C90-9422-728C57AFE5A9}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\orderdetaildao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7155997A-784A-4353-A054-862D6BB0F059}|VegeFoodAPI\\VegeFoodAPI.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodapi\\controllers\\orderdetailscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7155997A-784A-4353-A054-862D6BB0F059}|VegeFoodAPI\\VegeFoodAPI.csproj|solutionrelative:vegefoodapi\\controllers\\orderdetailscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80C43A19-8CA5-4886-AC2A-C4CB30125F77}|BusinessObjects\\BusinessObjects.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\businessobjects\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80C43A19-8CA5-4886-AC2A-C4CB30125F77}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\views\\home\\orderdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\views\\home\\orderdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7155997A-784A-4353-A054-862D6BB0F059}|VegeFoodAPI\\VegeFoodAPI.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodapi\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7155997A-784A-4353-A054-862D6BB0F059}|VegeFoodAPI\\VegeFoodAPI.csproj|solutionrelative:vegefoodapi\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\views\\home\\ordermanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\views\\home\\ordermanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\views\\home\\editorder.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\views\\home\\editorder.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\views\\home\\viewmyorders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\views\\home\\viewmyorders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{962E6E12-CA28-42F0-8FA2-9A152E0A5844}|Repositories\\Repositories.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{962E6E12-CA28-42F0-8FA2-9A152E0A5844}|Repositories\\Repositories.csproj|solutionrelative:repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\views\\shared\\_layoutprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\views\\shared\\_layoutprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\views\\home\\customerorderdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\views\\home\\customerorderdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\views\\home\\userprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\views\\home\\userprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\views\\shared\\_loginandregister.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\views\\shared\\_loginandregister.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\views\\home\\shop.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\views\\home\\shop.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\views\\home\\usermanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\views\\home\\usermanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\views\\home\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\views\\home\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7155997A-784A-4353-A054-862D6BB0F059}|VegeFoodAPI\\VegeFoodAPI.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7155997A-784A-4353-A054-862D6BB0F059}|VegeFoodAPI\\VegeFoodAPI.csproj|solutionrelative:vegefoodapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodwebclient\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{50BF5967-6C06-425F-8F9E-E0B90D496EB9}|VegeFoodWebClient\\VegeFoodWebClient.csproj|solutionrelative:vegefoodwebclient\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7155997A-784A-4353-A054-862D6BB0F059}|VegeFoodAPI\\VegeFoodAPI.csproj|c:\\users\\admin\\dropbox\\my pc (laptop-9q0nubbk)\\desktop\\projectprn231\\vegefoods\\vegefoodapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7155997A-784A-4353-A054-862D6BB0F059}|VegeFoodAPI\\VegeFoodAPI.csproj|solutionrelative:vegefoodapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OrderDetailDAO.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\DataAccess\\OrderDetailDAO.cs",
+              "RelativeDocumentMoniker": "DataAccess\\OrderDetailDAO.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\DataAccess\\OrderDetailDAO.cs",
+              "RelativeToolTip": "DataAccess\\OrderDetailDAO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-30T14:53:33.423Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodAPI\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "VegeFoodAPI\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodAPI\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "VegeFoodAPI\\Controllers\\OrderController.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAAwCEAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-30T14:23:23.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EditOrder.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\EditOrder.cshtml",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\Views\\Home\\EditOrder.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\EditOrder.cshtml",
+              "RelativeToolTip": "VegeFoodWebClient\\Views\\Home\\EditOrder.cshtml",
+              "ViewState": "AQIAAGYAAAAAAAAAAAAAAHAAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-30T14:13:51.063Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "OrderManagement.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\OrderManagement.cshtml",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\Views\\Home\\OrderManagement.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\OrderManagement.cshtml",
+              "RelativeToolTip": "VegeFoodWebClient\\Views\\Home\\OrderManagement.cshtml",
+              "ViewState": "AQIAAJwAAAAAAAAAAAAowLEAAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-30T13:52:37.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ViewMyOrders.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\ViewMyOrders.cshtml",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\Views\\Home\\ViewMyOrders.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\ViewMyOrders.cshtml",
+              "RelativeToolTip": "VegeFoodWebClient\\Views\\Home\\ViewMyOrders.cshtml",
+              "ViewState": "AQIAAJAAAAAAAAAAAAAcwHQAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-30T13:11:03.594Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrderDetailsController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodAPI\\Controllers\\OrderDetailsController.cs",
+              "RelativeDocumentMoniker": "VegeFoodAPI\\Controllers\\OrderDetailsController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodAPI\\Controllers\\OrderDetailsController.cs",
+              "RelativeToolTip": "VegeFoodAPI\\Controllers\\OrderDetailsController.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAAABsAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-30T13:07:51.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrderDetail.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\BusinessObjects\\OrderDetail.cs",
+              "RelativeDocumentMoniker": "BusinessObjects\\OrderDetail.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\BusinessObjects\\OrderDetail.cs",
+              "RelativeToolTip": "BusinessObjects\\OrderDetail.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-30T14:53:28.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrderDetails.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\OrderDetails.cshtml",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\Views\\Home\\OrderDetails.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\OrderDetails.cshtml",
+              "RelativeToolTip": "VegeFoodWebClient\\Views\\Home\\OrderDetails.cshtml",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAACEAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-30T13:33:06.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "VegeFoodWebClient\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAANwAAAAAAAAAAAAQwOYAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-30T14:01:39.396Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "OrderRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\Repositories\\OrderRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\OrderRepository.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\Repositories\\OrderRepository.cs",
+              "RelativeToolTip": "Repositories\\OrderRepository.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABgAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-30T14:26:03.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CustomerOrderDetails.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\CustomerOrderDetails.cshtml",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\Views\\Home\\CustomerOrderDetails.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\CustomerOrderDetails.cshtml",
+              "RelativeToolTip": "VegeFoodWebClient\\Views\\Home\\CustomerOrderDetails.cshtml",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAcwBkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-30T13:33:21.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_LayoutProfile.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Shared\\_LayoutProfile.cshtml",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\Views\\Shared\\_LayoutProfile.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Shared\\_LayoutProfile.cshtml",
+              "RelativeToolTip": "VegeFoodWebClient\\Views\\Shared\\_LayoutProfile.cshtml",
+              "ViewState": "AQIAAE4AAAAAAAAAAAAowFkAAABWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-30T13:48:49.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "_LayoutAdmin.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "RelativeToolTip": "VegeFoodWebClient\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "ViewState": "AQIAAL4AAAAAAAAAAAAAAHwAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-30T13:43:40.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "_LoginAndRegister.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Shared\\_LoginAndRegister.cshtml",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\Views\\Shared\\_LoginAndRegister.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Shared\\_LoginAndRegister.cshtml",
+              "RelativeToolTip": "VegeFoodWebClient\\Views\\Shared\\_LoginAndRegister.cshtml",
+              "ViewState": "AQIAADAAAAAAAAAAAAAowD8AAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-30T13:22:58.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UserProfile.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\UserProfile.cshtml",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\Views\\Home\\UserProfile.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\UserProfile.cshtml",
+              "RelativeToolTip": "VegeFoodWebClient\\Views\\Home\\UserProfile.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-30T13:25:59.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\Login.cshtml",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\Views\\Home\\Login.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\Login.cshtml",
+              "RelativeToolTip": "VegeFoodWebClient\\Views\\Home\\Login.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-30T13:26:48.612Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "VegeFoodWebClient\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAEwAAAAAAAAAAAAowFsAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-30T13:14:32.865Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Shop.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\Shop.cshtml",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\Views\\Home\\Shop.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\Shop.cshtml",
+              "RelativeToolTip": "VegeFoodWebClient\\Views\\Home\\Shop.cshtml",
+              "ViewState": "AQIAADEAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-30T13:27:37.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "VegeFoodWebClient\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-30T13:13:39.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "UserManagement.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\UserManagement.cshtml",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\Views\\Home\\UserManagement.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\UserManagement.cshtml",
+              "RelativeToolTip": "VegeFoodWebClient\\Views\\Home\\UserManagement.cshtml",
+              "ViewState": "AQIAAEoAAAAAAAAAAAAAAFYAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-30T13:08:25.149Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodAPI\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "VegeFoodAPI\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodAPI\\Controllers\\UserController.cs",
+              "RelativeToolTip": "VegeFoodAPI\\Controllers\\UserController.cs",
+              "ViewState": "AQIAACoAAAAAAAAAAAAYwA0AAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-30T13:08:14.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Checkout.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\Checkout.cshtml",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\Views\\Home\\Checkout.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\Views\\Home\\Checkout.cshtml",
+              "RelativeToolTip": "VegeFoodWebClient\\Views\\Home\\Checkout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-30T12:54:41.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "VegeFoodAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodAPI\\appsettings.json",
+              "RelativeToolTip": "VegeFoodAPI\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-30T12:48:56.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\appsettings.json",
+              "RelativeDocumentMoniker": "VegeFoodWebClient\\appsettings.json",
+              "ToolTip": "C:\\Users\\ADMIN\\Dropbox\\My PC (LAPTOP-9Q0NUBBK)\\Desktop\\ProjectPRN231\\VegeFoods\\VegeFoodWebClient\\appsettings.json",
+              "RelativeToolTip": "VegeFoodWebClient\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-30T12:48:48.694Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

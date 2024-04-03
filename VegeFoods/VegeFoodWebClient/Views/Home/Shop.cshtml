@@ -1,0 +1,244 @@
+﻿@model VegeFoodWebClient.Controllers.HomeController
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IHttpContextAccessor contxt;
+@{
+    
+    
+    Layout = "_ShopLayout";
+}
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 mb-5 text-center">
+                <form action="#" class="subscribe-form">
+                    <div class="form-group d-flex">
+                        <input style="border: 1px solid #82ae46; border-radius:0px" type="text" id="searchString" class="form-control" placeholder="Find Vegetables">
+                        <input type="button" id="search" value="Search Veges" class="submit px-3">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row" id="content-product">
+            @*<div class="col-md-6 col-lg-3 ftco-animate" >*@
+                @*<div class="product">
+                    <a href="#" class="img-prod">
+                        <img class="img-fluid" src="/images/product-1.jpg" alt="Colorlib Template">
+                        <div class="overlay"></div>
+                    </a>
+                    <div class="text py-3 pb-4 px-3 text-center">
+                        <h3><a href="#">Bell Pepper</a></h3>
+                        <div class="d-flex">
+                            <div class="pricing">
+                                <p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>
+                            </div>
+                        </div>
+                        <div class="bottom-area d-flex px-3">
+                            <div class="m-auto d-flex">
+                                <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                    <span><i class="ion-ios-menu"></i></span>
+                                </a>
+                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                    <span><i class="ion-ios-cart"></i></span>
+                                </a>
+                                <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                                    <span><i class="ion-ios-heart"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            @*</div>*@
+        </div>
+
+        <div class="row mt-5">
+            <div class="col text-center">
+                <div  class="block-27">
+                    <ul id="pages">
+                        @*<li><a href="#">&lt;</a></li>
+                        <li class="active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&gt;</a></li>*@
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        var page = 1;
+        var totalPages = 0;
+        $(document).ready(function () {
+
+            $('#search').click(() => {
+                let searchString = $('#searchString').val();
+                $.ajax({
+                    url: `http://localhost:5104/api/Product/SearchProductByName/${searchString}/${page}`,
+                    method: 'GET',
+
+                    beforeSend: function (xhr) {
+                        // Use proper concatenation to include the token in the header
+                        xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                    },
+                    contentType: 'application/json',
+                    success: (data) => {
+                        $('#content-product').html('');
+                        //nếu có data trả về
+                        if (data) {
+                            $('#content-product').html(generateHtmlProduct(data.products));
+                            $('#pages').hide()
+                        }
+                    },
+                    error: (data) => {
+
+                    }
+                })
+
+                
+            });
+
+
+            $.ajax({
+                url: `http://localhost:5104/api/Product/${page}`, // Replace with your endpoint URL
+                method: 'GET',
+                beforeSend: function (xhr) {
+                    // Use proper concatenation to include the token in the header
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                },
+                contentType: 'application/json',
+                success: (data) => {
+                    //console.log(data);
+                    $('#content-product').html('');
+                    //nếu có data trả về
+                    if (data) {
+                        $('#content-product').html(generateHtmlProduct(data.products));
+                        console.log(data.pages);
+                        totalPages = data.pages;
+                        let dataPage = '';
+                        var i = 1;
+                        for (i; i <= totalPages; i++) {
+
+                            dataPage += `<li> <a style="margin: 3px" id="page` + i + `" onclick="GotoPage(` + i + `)" href="#">` + i + `</a></li>`;
+                        }
+                        $('#pages').append(dataPage)
+                    }
+
+                },
+                error: function () {
+                    console.error('Failed to fetch data.');
+                }
+            });
+
+            //$(document).on('click', '.viewDetail', function () {
+            //    let id = $(this).attr('data-id');
+
+            //    $.ajax({
+            //        url: `http://localhost:5104/api/Product/GetProductById/${id}`,
+            //        method: 'GET',
+            //        contentType: 'application/json',
+            //        success: (data) => {
+            //            $('#content-detail').html('');
+            //            //nếu có data trả về
+            //            if (data) {
+            //                //trỏ debug ở đây để debug trên web
+            //                //debugger
+
+            //                $('#content-detail').html(generateHtmlProductDetail(data));
+            //                //console.log(data) //nhập dữ liệu trên dòng
+
+            //            }
+            //        },
+            //        error: (data) => {
+
+            //        }
+            //    })
+            //})
+         
+       
+        });
+    </script>
+
+
+    <script>
+        function GotoPage(i) {
+            
+            $.ajax({
+                url: `http://localhost:5104/api/Product/${i}`, // Replace with your endpoint URL
+                method: 'GET',
+                beforeSend: function (xhr) {
+                    // Use proper concatenation to include the token in the header
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                },
+                contentType: 'application/json',
+                success: (data) => {
+                    //console.log(data);
+                    $('#content-product').html('');
+                    //nếu có data trả về
+                    if (data) {
+                        $('#content-product').html(generateHtmlProduct(data.products));
+                        console.log(data.pages);
+                        totalPages = data.pages;
+                    }
+
+                },
+                error: function () {
+                    console.error('Failed to fetch data.');
+                }
+            });
+        };
+
+
+         const generateHtmlProduct = (data) => {
+                let content =
+                    `{0}`
+
+
+                let dataGrid = '';
+                //console.log(data.products);
+                data.forEach(element => {
+                    console.log(element);
+
+                    dataGrid +=
+                        `
+                        <div style="margin: 10px;">
+                                <div class="product">
+                                        <a data-id="${element.productId}" class="viewDetail" href="http://localhost:5007/Home/SingleProduct/?productId=${element.productId}" class="img-prod">
+                                        <img width="200px" height="200px" src="${element.productImage}" alt="Colorlib Template">
+                                        <div class="overlay"></div>
+                                    </a>
+                                    <div class="text py-3 pb-4 px-3 text-center">
+                                        <h3><a data-id="${element.productId}" class="viewDetail" href="http://localhost:5007/Home/SingleProduct/?productId=${element.productId}">${element.productName}</a></h3>
+                                        <div class="d-flex">
+                                            <div class="pricing">
+                                                <p class="price"><span class="mr-2">${element.unitPrice} VND</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="bottom-area d-flex px-3">
+                                            <div class="m-auto d-flex">
+                                                <a href="http://localhost:5007/Home/SingleProduct/?productId=${element.productId}" data-id="${element.productId}" class="viewDetail" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                                <span><i class="ion-ios-menu"></i></span>
+                                                </a>
+                                                        <a href="http://localhost:5007/Home/Shop/?productId=${element.productId}" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                                    <span><i class="ion-ios-cart"></i></span>
+                                                </a>
+                                                <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                                                    <span><i class="ion-ios-heart"></i></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        `
+                });
+                return content.replace('{0}', dataGrid);
+            }
+    </script>
+}
+

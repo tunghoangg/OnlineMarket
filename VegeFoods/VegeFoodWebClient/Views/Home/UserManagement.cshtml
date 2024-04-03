@@ -1,0 +1,194 @@
+﻿@using BusinessObjects;
+@using VegeFoodWebClient.SessionExtensions;
+@model VegeFoodWebClient.Controllers.HomeController
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IHttpContextAccessor contxt;
+@{
+    Layout = "_LayoutAdmin";
+    User u = contxt.HttpContext.Session.GetObject<User>("User");
+}
+
+@*<div>
+    <h4 class="m-0 font-weight-bold text-primary">Product Management</h4>
+</div>*@
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div class="input-group">
+            <input type="text" class="form-control bg-light border-1 small" placeholder="Search User Name"
+                   aria-label="Search" id="searchString" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button style="margin-right: 2px" class="btn btn-primary" id="search" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                
+
+
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul id="pages" class="pagination justify-content-end">
+                    @*<li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>*@
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        var page = 1;
+        var totalPages = 0;
+
+        $('#search').click(() => {
+            let searchString = $('#searchString').val();
+            $.ajax({
+                url: `http://localhost:5104/api/User/SearchUserByName/${searchString}/${page}`,
+                method: 'GET',
+                beforeSend: function (xhr) {
+                    // Use proper concatenation to include the token in the header
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                },
+                contentType: 'application/json',
+                success: (data) => {
+                    $('#dataTable').html('');
+                    //nếu có data trả về
+                    if (data) {
+                        $('#dataTable').html(generateHtmlUserList(data.users));
+                        console.log(data.users);
+                        $('#pages').hide()
+                    }
+                },
+                error: (data) => {
+
+                }
+            })
+        });
+
+        $(document).ready(function () {
+            var userCheck = @Html.Raw(Json.Serialize(u));
+            if (userCheck.role != "Admin") {
+                alert("Access Denied")
+                window.location.href = "http://localhost:5007/Home/Index";
+            }
+            $.ajax({
+                url: `http://localhost:5104/api/User/${page}`, // Replace with your endpoint URL
+                method: 'GET',
+                beforeSend: function (xhr) {
+                    // Use proper concatenation to include the token in the header
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                },
+                contentType: 'application/json',
+                success: (data) => {
+                    //console.log(data);
+                    $('#dataTable').html('');
+                    //nếu có data trả về
+                    if (data) {
+                        $('#dataTable').html(generateHtmlUserList(data.users));
+                        console.log(data.users);
+                        totalPages = data.pages;
+                        let dataPage = '';
+                        var i = 1;
+                        for (i; i <= totalPages; i++) {
+
+                            dataPage += `<li class="page-item"><a class="page-link" style="margin: 3px" id="page` + i + `" onclick="GotoPage(` + i + `)" href="#">` + i + `</a></li>`;
+                        }
+                        $('#pages').append(dataPage)
+                    }
+
+                },
+                error: function () {
+                    console.error('Failed to fetch data.');
+                }
+            });
+
+            
+        });
+    </script>
+
+    <script>
+        function GotoPage(i) {
+
+            $.ajax({
+                url: `http://localhost:5104/api/User/${i}`, // Replace with your endpoint URL
+                method: 'GET',
+                beforeSend: function (xhr) {
+                    // Use proper concatenation to include the token in the header
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                },
+                contentType: 'application/json',
+                success: (data) => {
+                    //console.log(data);
+                    $('#dataTable').html('');
+                    //nếu có data trả về
+                    if (data) {
+                        $('#dataTable').html(generateHtmlUserList(data.users));
+                        console.log(data.pages);
+                        totalPages = data.pages;
+                    }
+                },
+                error: function () {
+                    console.error('Failed to fetch data.');
+                }
+            });
+        };
+
+        const generateHtmlUserList = (data) => {
+            let tableContent =
+                `<thead>
+                                             <tr>
+                                                 <th>ID</th>
+                                                 <th>Username</th>
+                                                 <th>Phone</th>
+                                                 <th>Email</th>
+                                                 <th>Role</th>
+                                                 <th>Control</th>
+                                             </tr>
+                                        </thead>
+                                        <tfoot>
+                                             <tr>
+                                                 <th>ID</th>
+                                                 <th>Username</th>
+                                                 <th>Phone</th>
+                                                 <th>Email</th>
+                                                 <th>Role</th>
+                                                 <th>Control</th>
+                                             </tr>
+                                        </tfoot>
+                                        <tbody>
+                                              {0}
+                                        </tbody>
+                                        `
+
+
+            let tableData = '';
+            //console.log(data.products);
+            data.forEach(element => {
+                console.log(element);
+
+                tableData +=
+                    `
+                    <tr>
+                         <td>${element.accountId}</td>
+                         <td>${element.userName}</td>
+                         <td>${element.phone}</td>
+                         <td>${element.email}</td>
+                         <td>${element.role}</td>
+                         <td><a href="http://localhost:5007/Home/ManageUserDetails/?accountId=${element.accountId}"><button type="button" class="btn btn-secondary">Details</button></a></td>
+                    </tr>
+                    `
+            });
+            return tableContent.replace('{0}', tableData);
+        }
+    </script>
+}

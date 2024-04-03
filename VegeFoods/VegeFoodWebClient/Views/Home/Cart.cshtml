@@ -1,0 +1,93 @@
+﻿@using BusinessObjects;
+@using VegeFoodWebClient.SessionExtensions;
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IHttpContextAccessor contxt;
+@{
+	Layout = "_LayoutCart";
+	if (contxt.HttpContext.Session.GetObject<List<Product>>("cart") == null)
+	{
+		contxt.HttpContext.Session.SetObject("cart", new List<Product>());
+	}
+	decimal totalMoney = 0;
+}
+
+<section class="ftco-section ftco-cart">
+			<div class="container">
+				<div class="row">
+    			<div class="col-md-12 ftco-animate">
+    				<div class="cart-list">
+	    				<table class="table">
+						    <thead class="thead-primary">
+						      <tr class="text-center">
+						        <th>&nbsp;</th>
+						        <th>&nbsp;</th>
+						        <th>Product name</th>
+						        <th>Price</th>
+						        <th>Quantity</th>
+						        <th>Total</th>
+						      </tr>
+						    </thead>
+						    <tbody>
+								 @foreach (Product p in contxt.HttpContext.Session.GetObject<List<Product>>("cart"))
+							{
+								<tr class="text-center">
+									<td class="product-remove">
+										<a href="http://localhost:5007/Home/Cart/?pIdToDelete=@p.ProductId"><span class="ion-ios-close"></span> </a>
+									</td>
+
+									<td class="image-prod">
+										<div class="img" style="background-image:url(@p.ProductImage);"></div>
+									</td>
+
+									<td class="product-name">
+										<h3>@p.ProductName</h3>
+										<p>@p.Description</p>
+									</td>
+
+									<td class="price">@p.UnitPrice</td>
+
+									<td class="quantity">
+										<div class="input-group mb-3">
+											<div style="margin-left:100px" >@p.UnitInStock</div>
+										</div>
+									</td>
+
+									<td class="total">@(@p.UnitPrice*@p.UnitInStock)</td>
+								</tr>
+
+								<!-- END TR-->
+							}
+						    </tbody>
+						  </table>
+					  </div>
+    			</div>
+    		</div>
+    		<div class="row justify-content-end">
+
+    			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+    				<div class="cart-total mb-3">
+    					
+    					<hr>
+    					<p class="d-flex total-price">
+    						<span>Total</span>
+						@foreach (Product p in contxt.HttpContext.Session.GetObject<List<Product>>("cart"))
+						{
+						<p hidden>@(totalMoney =  totalMoney + @p.UnitPrice* @p.UnitInStock)</p>
+						}
+						<span>@totalMoney</span>
+    					</p>
+    				</div>
+				@if (contxt.HttpContext.Session.GetObject<List<Product>>("cart").Count == 0)
+				{
+					<p hidden><a href="http://localhost:5007/Home/Checkout" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+				}
+				else{
+				<p><a href="http://localhost:5007/Home/Checkout/?totalMoney=@totalMoney" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+				}
+				
+    			</div>
+    		</div>
+			</div>
+		</section>
+		
+	

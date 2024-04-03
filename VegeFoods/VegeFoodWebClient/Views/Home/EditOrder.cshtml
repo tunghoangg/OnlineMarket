@@ -1,0 +1,183 @@
+﻿@using BusinessObjects;
+@using VegeFoodWebClient.SessionExtensions;
+@model VegeFoodWebClient.Controllers.HomeController
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IHttpContextAccessor contxt;
+@{
+    Layout = "_LayoutAdmin";
+    User u = contxt.HttpContext.Session.GetObject<User>("User");
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div>
+            <h4 class="m-0 font-weight-bold text-primary">Edit Order</h4>
+        </div>
+    </div>
+    <div class="card-body">
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6" id="addressblock">
+                    @*<label for="inputEmail4">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name Product">*@
+                </div>
+                <div class="form-group col-md-6" id="categoryblock">
+                    <label for="inputState">Status</label>
+                    <select id="status" class="form-control">
+                        <option value="Approved">Approved</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6" id="orderdateblock">
+                    @*<label for="inputEmail4">Units</label>
+                    <input type="number" class="form-control" id="units" placeholder="Unit In Stock">*@
+                </div>
+                <div class="form-group col-md-6" id="shipdateblock">
+                    @* <label for="inputEmail4">Price</label>
+                    <input type="number" class="form-control" id="price" placeholder="Insert Price">*@
+                </div>
+            </div>
+            <div class="form-group" id="phoneblock">
+                @*<label for="inputAddress">Image Link</label>
+                <input type="text" class="form-control" id="imgLink" placeholder="Insert Link">*@
+            </div>
+            <div class="form-group" id="orderidblock">
+                @*<label for="exampleFormControlTextarea1">Description</label>
+                <textarea class="form-control" id="description" rows="3"></textarea>*@
+            </div>
+            <div class="form-group" id="customeridblock">
+                @*<label for="exampleFormControlTextarea1">Description</label>
+                <textarea class="form-control" id="description" rows="3"></textarea>*@
+            </div>
+            <button type="button" id="save" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        console.log(@ViewData["orderId"]);
+        var id = @ViewData["orderId"];
+
+        $(document).ready(function () {
+            var userCheck = @Html.Raw(Json.Serialize(u));
+            if (userCheck.role != "Admin") {
+                alert("Access Denied")
+                window.location.href = "http://localhost:5007/Home/Index";
+            }
+            $('#save').click(() => {
+                let orderId = id,
+                    customerId = $('#cid').val(),
+                    orderDate = $('#orderdate').val();
+                    address = $('#address').val(),
+                    phone = $('#phone').val(),
+                    shipDate = $('#shipdate').val(),
+                    status = $('#status').val();
+
+                $.ajax({
+                    url: `http://localhost:5104/api/Order/${id}`,
+                    method: 'PUT',
+                    beforeSend: function (xhr) {
+                        // Use proper concatenation to include the token in the header
+                        xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                    },
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        "orderId": orderId,
+                        "customerId": customerId,
+                        "orderDate": orderDate,
+                        "address": address,
+                        "phone": phone,
+                        "address": address,
+                        "shipDate": shipDate,
+                        "status": status
+                    }),
+                    success: function (data) {
+                        console.log(data);
+                        alert("Update order successfully");
+                        window.location.href = "http://localhost:5007/Home/OrderManagement";
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("error");
+                        //console.log(usernameR + "\n" + passwordR + "\n" + emailR + "\n" + phoneR + "\n" + fullNameR);
+                    }
+
+                })
+            })
+
+            $.ajax({
+                url: `http://localhost:5104/api/Order/GetOrderById/${id}`,
+                method: 'GET',
+                beforeSend: function (xhr) {
+                    // Use proper concatenation to include the token in the header
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + '@contxt.HttpContext.Session.GetString("JWToken")');
+                },
+                contentType: 'application/json',
+                success: (data) => {
+                    //$('#content-detail').html('');
+                    //nếu có data trả về
+                    if (data) {
+                        //trỏ debug ở đây để debug trên web
+                        //debugger
+
+                        $('#addressblock').html(generateHtmladdressblock(data));
+                        $('#orderdateblock').html(generateHtmlorderdateblock(data));
+                        $('#shipdateblock').html(generateHtmlshipdateblock(data));
+                        $('#phoneblock').html(generateHtmlImgblock(data));
+                        $('#orderidblock').html(generateHtmlDescriptionblock(data));
+                        $('#customeridblock').html(generateHtmlPasswordblock(data));
+                    }
+                },
+                error: (data) => {
+
+                }
+            })
+
+            const generateHtmladdressblock = (data) => {
+                return `
+                     <label for="inputEmail4">Address</label>
+                     <input type="text" value="${data.address}" class="form-control" id="address" readonly>
+                `
+            }
+
+            const generateHtmlorderdateblock = (data) => {
+                return `
+                    <label for="inputEmail4">Order Date</label>
+                    <input type="text" value="${data.orderDate}" class="form-control" id="orderdate" readonly>
+                `
+            }
+
+            const generateHtmlshipdateblock = (data) => {
+                return `
+                    <label for="inputEmail4">Ship Date</label>
+                    <input type="date" class="form-control" id="shipdate">
+                `
+            }
+     
+            const generateHtmlImgblock = (data) => {
+                return `
+                    <label for="inputAddress">Phone</label>
+                    <input type="text" value="${data.phone}" class="form-control" id="phone" readonly>
+                `
+            }
+            const generateHtmlDescriptionblock = (data) => {
+                return `
+                    <label hidden for="exampleFormControlTextarea1">Order ID</label>
+                    <input hidden type="text" value="${data.orderId}" class="form-control" id="description" rows="3" readonly>
+                `
+            }
+            const generateHtmlPasswordblock = (data) => {
+                return `
+                    <label hidden for="exampleFormControlTextarea1">CustomerID</label>
+                    <input hidden type="text" value="${data.customerId}" class="form-control" id="cid" rows="3" readonly>
+                `
+            }
+        });
+
+        
+    </script>
+}
